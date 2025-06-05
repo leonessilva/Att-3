@@ -1,0 +1,21 @@
+public class Main {
+    public static void main(String[] args) {
+        CilindroGas cilindro = new CilindroGas(50);
+        System.out.println("Cilindro criado: " + cilindro);
+
+        int[] consumos = {10, 5, 40};
+
+        for (int consumo : consumos) {
+            try {
+                System.out.println("\nRegistrando consumo de " + consumo + " unidades...");
+                cilindro.registrarConsumo(consumo);
+            } catch (ConsumoExcedenteException e) {
+                System.out.println(e.getMessage());
+            } finally {
+                System.out.println("Estado atual: " + cilindro);
+            }
+        }
+
+        System.out.println("\nCapacidade final do cilindro: " + cilindro.getCapacidadeAtual() + " unidades.");
+    }
+}
