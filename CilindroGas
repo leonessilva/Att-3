@@ -1,0 +1,38 @@
+public class CilindroGas {
+    private int capacidadeMaxima;
+    private int capacidadeAtual;
+    private int qtdeUltimoConsumo;
+
+    public CilindroGas(int capacidadeMaxima) {
+        this.capacidadeMaxima = capacidadeMaxima;
+        this.capacidadeAtual = capacidadeMaxima;
+        this.qtdeUltimoConsumo = 0;
+    }
+
+    public int getCapacidadeMaxima() {
+        return capacidadeMaxima;
+    }
+
+    public int getCapacidadeAtual() {
+        return capacidadeAtual;
+    }
+
+    public int getQtdeUltimoConsumo() {
+        return qtdeUltimoConsumo;
+    }
+
+    public void registrarConsumo(int quantidade) throws ConsumoExcedenteException {
+        if (quantidade > capacidadeAtual) {
+            throw new ConsumoExcedenteException("Erro: Consumo excede a capacidade atual de gás.");
+        }
+        qtdeUltimoConsumo = quantidade;
+        capacidadeAtual -= quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Cilindro de Gás - Capacidade Máxima: " + capacidadeMaxima +
+               ", Capacidade Atual: " + capacidadeAtual +
+               ", Último Consumo: " + qtdeUltimoConsumo;
+    }
+}
